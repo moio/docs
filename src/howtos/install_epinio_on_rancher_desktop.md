@@ -23,7 +23,7 @@ Manual verification is possible by executing the command `kubectl get pods -A` i
 
 For now, Rancher Desktop configures his own loadbalancer (Traefik through K3s) and you have to set Epinio system domain according to the provided IP, for example:
 ```
-LB_IP=$(kubectl describe svc traefik --namespace traefik \
+LB_IP=$(kubectl describe svc traefik --namespace kube-system \
         | awk '/Ingress/ { print $3 }')
 
 export EPINIO_SYSTEM_DOMAIN=${LB_IP}.omg.howdoi.website
